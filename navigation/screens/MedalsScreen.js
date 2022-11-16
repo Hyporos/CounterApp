@@ -1,85 +1,22 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import { useTheme } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-import { CountContext } from '../../contexts/CountContext';
-import { BadgeContext } from '../../contexts/BadgeContext';
+import { useTheme } from '@react-navigation/native';
 import { styles } from "../../styles/Styles";
 
+import { MedalContext } from '../../contexts/MedalContext';
+
+// IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS 
 
 export default function MedalsScreen({ navigation }) {
 
     const { colors } = useTheme();
-    const { counter } = useContext(CountContext);
-    const { badgeCount, setBadgeCount } = useContext(BadgeContext);
-    
-    const [achieved, setAchieved] = useState(false);
-    const [customizeAchieved1, setCustomizeAchieved1] = useState(false);
+    const { countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, customizeMedal1, customizeMedal2, secretMedal } = useContext(MedalContext);
 
-    const [countMedal1, setCountMedal1] = useState(0.25);
-    const [countMedal2, setCountMedal2] = useState(0.25);
-    const [countMedal3, setCountMedal3] = useState(0.25);
-    const [countMedal4, setCountMedal4] = useState(0.25);
-    const [countMedal5, setCountMedal5] = useState(0.25);
-    const [countMedal6, setCountMedal6] = useState(0.25);
-    const [customizeMedal1, setCustomizeMedal1] = useState(0.25);
-    const [customizeMedal2, setCustomizeMedal2] = useState(0.25);
-    const [secretMedal, setSecretMedal] = useState(0.25); // 
-
-    useEffect(() => {
-
-        if (counter != 1 && counter != 100 && counter != 1000 && counter != 10000 && counter != 100000 && counter != 1000000) {
-            setAchieved(false);
-        }
-        
-        if (counter == 1 && achieved == false) {
-            setCountMedal1(1);
-            setBadgeCount(badgeCount + 1)
-            setAchieved(true);
-        }
-
-        if (counter == 100 && achieved == false) {
-            setCountMedal2(1);
-            setBadgeCount(badgeCount + 1)
-            setAchieved(true);
-        }
-
-        if (counter == 1000 && achieved == false) {
-            setCountMedal3(1);
-            setBadgeCount(badgeCount + 1)
-            setAchieved(true);
-        }
-
-        if (counter == 10000 && achieved == false) {
-            setCountMedal4(1);
-            setBadgeCount(badgeCount + 1)
-            setAchieved(true);
-        }
-
-        if (counter == 100000 && achieved == false) {
-            setCountMedal5(1);
-            setBadgeCount(badgeCount + 1)
-            setAchieved(true);
-        }
-
-        if (counter == 1000000 && achieved == false) {
-            setCountMedal6(1);
-            setBadgeCount(badgeCount + 1)
-            setAchieved(true);
-        }
-
-        if (colors.primary != '#FFBF00' && customizeAchieved1 == false) {
-            setCustomizeMedal1(1);
-            setBadgeCount(badgeCount + 1)
-            setCustomizeAchieved1(true);
-        }
-        
-    })
+    // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS 
 
     return (
         <ScrollView style={{ backgroundColor: '#181818' }}>
-
             <View style={styles.medalCardContainer}>
 
                 <View style={[styles.medalCard, { borderColor: colors.border, opacity: countMedal1 }]}>
@@ -154,9 +91,7 @@ export default function MedalsScreen({ navigation }) {
                     </View>
                 </View>
 
-
             </View>
-
         </ScrollView>
     );
 }

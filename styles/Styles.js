@@ -8,40 +8,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    categoryLabel: {
-        flex: 1,
-        color: '#ffffff',
-        textAlign: 'center',
-        fontSize: 25,
-        textShadowColor: '#181818',
-        textShadowRadius: 20
-    },
-    categoryContainer: {
-        backgroundColor: '#3d3d3d',
-        borderWidth: 5,
-        borderRadius: 15,
-        borderColor: '#212121',
-        marginTop: 7.5,
-        marginLeft: 5,
-        marginRight: 5,
-        marginBottom: 7.5
-    },
-    divider: {
-        borderBottomWidth: .15,
-        borderColor: '#FFBF00',
-    },
 
-    verticalDivider: {
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
-        borderBottomWidth: 50,
-        borderColor: '#3d3d3d',
-    },
-
-    categoryDivider: {
-        borderBottomWidth: 1,
-        borderColor: '#FFBF00',
-    },
+    // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER 
 
     counterButton: {
         justifyContent: 'center',
@@ -53,9 +21,7 @@ const styles = StyleSheet.create({
         borderWidth: 10,
     },
 
-    counterText: {
-        fontSize: 60,
-    },
+        // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB 
 
     tabHeader: {
         paddingHorizontal: 63.75,
@@ -144,7 +110,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'stretch',
         marginTop: 10,
-        marginBottom: 250,
+        marginBottom: 20,
         paddingHorizontal: 10,
     },
 
@@ -152,7 +118,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start',
         backgroundColor: '#3d3d3d',
-        borderWidth: 1, 
+        borderWidth: 1,
         paddingVertical: 7.5,
         marginTop: 10,
         borderRadius: 10,
@@ -174,6 +140,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingLeft: '2.5%',
     },
+
+    // MISC
 
 });
 
