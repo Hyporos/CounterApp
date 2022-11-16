@@ -4,18 +4,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as NavigationBar from "expo-navigation-bar";
 import { StatusBar } from 'expo-status-bar';
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 
 import CounterScreen from './screens/CounterScreen';
 import CustomizeScreen from './screens/CustomizeScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import MedalsScreen from './screens/MedalsScreen';
-import { styles } from '../styles/Styles';
 
 import { Amber, Tiger, Crimson, Blush, Amethyst, Azure, Lime } from "../styles/Themes"
 import { ThemeContext } from '../contexts/ThemeContext';
 import { CountContext } from '../contexts/CountContext';
-import { MedalContext } from '../contexts/MedalContext';
+import { BadgeContext } from '../contexts/BadgeContext';
 
 // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS 
 
@@ -33,10 +31,7 @@ export default function MainContainer() {
 
     const [theme, setTheme] = useState('Amber');
     const [counter, setCounter] = useState(0);
-
-    const [medalVisible, setMedalVisible] = useState(false);
-    const [medalTitle, setMedalTitle] = useState('Placeholder');
-    const [medalSubtitle, setMedalSubtitle] = useState('Placeholder');
+    const [badgeCount, setBadgeCount] = useState(0);
 
     const containerTheme = useMemo(() => {
         switch (theme) {
@@ -58,21 +53,14 @@ export default function MainContainer() {
         }
     }, [theme])
 
-    setTimeout(() => {
-        setMedalVisible(false);
-    }, 5000)
-
     return (
 
-
         <ThemeContext.Provider value={{ theme, setTheme }}>
-            <MedalContext.Provider value={{ medalVisible, setMedalVisible, medalTitle, setMedalTitle, medalSubtitle, setMedalSubtitle }}>
+            <BadgeContext.Provider value={{ badgeCount, setBadgeCount }}>
                 <CountContext.Provider value={{ counter, setCounter }}>
                     <NavigationContainer theme={containerTheme}>
 
                         <StatusBar style="auto" />
-
-
 
                         <Tab.Navigator
                             initialRouteName={counterName}
@@ -103,41 +91,24 @@ export default function MainContainer() {
                                 headerTitleStyle: { fontSize: 20 },
                             })}>
 
-
-
                             <Tab.Screen name={counterName} component={CounterScreen} />
                             <Tab.Screen name={customizeName} component={CustomizeScreen} />
-                            <Tab.Screen name={medalsName} component={MedalsScreen} />
+                            <Tab.Screen name={medalsName} component={MedalsScreen} 
+                            options={{ tabBarBadge: badgeCount ? badgeCount : undefined }}
+                            listeners={{
+                                tabPress: e => {
+                                    setBadgeCount(0);
+                                }
+                            }}
+                              />
                             <Tab.Screen name={settingsName} component={SettingsScreen} />
 
                         </Tab.Navigator>
 
-
-                        <Modal
-                            animationType="fade"
-                            transparent={true}
-                            visible={medalVisible}
-                            onRequestClose={() => {
-                                setMedalVisible(!medalVisible);
-                            }}
-                        >
-                            <View style={[styles.medalCardContainer, {marginTop: '16%'}]}>
-                                <View style={styles.medalCard}>
-                                    <Ionicons name='radio-button-on-outline' size={50} color={'white'} />
-                                    <View style={styles.medalTextContainer}>
-                                        <Text style={styles.medalCardTitle}>{medalTitle}</Text>
-                                        <Text style={styles.medalCardSubTitle}>{medalSubtitle}</Text>
-                                    </View>
-                                </View>
-                            </View>
-                        </Modal>
-
-
                     </NavigationContainer>
                 </CountContext.Provider>
-            </MedalContext.Provider>
+            </BadgeContext.Provider>
         </ThemeContext.Provider>
-
 
     );
 }
