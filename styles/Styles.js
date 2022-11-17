@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         borderWidth: 10,
     },
 
-        // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB 
+    // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB 
 
     tabHeader: {
         paddingHorizontal: 63.75,
@@ -52,25 +52,45 @@ const styles = StyleSheet.create({
 
     themeCardContainer: {
         backgroundColor: '#181818',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'stretch',
-        marginTop: 10,
-        marginBottom: 250,
-        paddingHorizontal: 10,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        paddingHorizontal: 7.5,
     },
 
     themeCard: {
-        backgroundColor: '#3d3d3d',
-        borderWidth: 1,
+        backgroundColor: '#3D3D3D',
+        borderColor: '#aaaaaa',
+        width: '47.5%',
         paddingVertical: 10,
         marginTop: 10,
     },
 
     themeCardText: {
         color: '#ffffff',
-        fontSize: 20,
+        fontSize: 19,
         textAlign: 'center',
+        paddingLeft: '6.5%',
+    },
+
+    themeCardTouchable: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        paddingLeft: '6.5%',
+    },
+
+    themeHeaderText: {
+        fontSize: 30,
+        color: '#ffffff',
+        textAlign: 'center',
+        paddingTop: 10
+    },
+
+    themeDivider: {
+        borderColor: 'ffffff',
+        borderBottomWidth: 1,
+        marginBottom: 23,
+        paddingTop: 13
     },
 
     // EFFECTS // EFFECTS // EFFECTS // EFFECTS // EFFECTS // EFFECTS // EFFECTS // EFFECTS // EFFECTS 

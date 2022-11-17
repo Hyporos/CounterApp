@@ -56,11 +56,11 @@ const CounterScreen = () => {
     // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS 
 
     return (
-        <View style={styles.container}>
-            <View>
+        <View style={[styles.container, {backgroundColor: colors.background}]}>
+            <View elevation={7.5} style={{backgroundColor: colors.background, borderRadius: 500}}>
                 <TouchableOpacity
                     onPress={() => setCounter(counter + 1)}
-                    style={[styles.counterButton, { backgroundColor: colors.primary }]}>
+                    style={[styles.counterButton, { backgroundColor: colors.primary, borderColor: colors.container, borderWidth: 0 }]}>
                     <Text style={{ fontSize: 60 }}>{counter}</Text>
                 </TouchableOpacity>
             </View>

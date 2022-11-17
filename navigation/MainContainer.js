@@ -4,7 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as NavigationBar from "expo-navigation-bar";
 import { StatusBar } from 'expo-status-bar';
-import { Amber, Tiger, Crimson, Blush, Amethyst, Azure, Lime } from "../styles/Themes"
+import {
+    Amber, Mustard, Cinnabar, Autumn, Inchworm, Mint, Azure, Cerulean, Wisteria, Rose,
+    AmberSpruce, MustardSpruce, CinnabarSpruce, AutumnSpruce, InchwormSpruce, MintSpruce, AzureSpruce, CeruleanSpruce, WisteriaSpruce, RoseSpruce,
+    AmberSepia, MustardSepia, CinnabarSepia, AutumnSepia, InchwormSepia, MintSepia, AzureSepia, CeruleanSepia, WisteriaSepia, RoseSepia,
+    AmberMauve, MustardMauve, CinnabarMauve, AutumnMauve, InchwormMauve, MintMauve, AzureMauve, CeruleanMauve, WisteriaMauve, RoseMauve,
+    AmberWhiteGrey, MustardWhiteGrey, CinnabarWhiteGrey, AutumnWhiteGrey, InchwormWhiteGrey, MintWhiteGrey, AzureWhiteGrey, CeruleanWhiteGrey, WisteriaWhiteGrey, RoseWhiteGrey,
+    AmberCream, MustardCream, CinnabarCream, AutumnCream, InchwormCream, MintCream, AzureCream, CeruleanCream, WisteriaCream, RoseCream,
+} from "../themes/Themes"
 
 import CounterScreen from './screens/CounterScreen';
 import CustomizeScreen from './screens/CustomizeScreen';
@@ -19,8 +26,6 @@ import { MedalContext } from '../contexts/MedalContext';
 // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS 
 
 export default function MainContainer() {
-
-    NavigationBar.setBackgroundColorAsync("#212121");
 
     const counterName = 'Counter';
     const customizeName = 'Customize';
@@ -63,21 +68,129 @@ export default function MainContainer() {
         switch (theme) {
             case 'Amber':
                 return Amber;
-            case 'Tiger':
-                return Tiger;
-            case 'Crimson':
-                return Crimson;
-            case 'Blush':
-                return Blush;
-            case 'Amethyst':
-                return Amethyst;
+            case 'Mustard':
+                return Mustard;
+            case 'Cinnabar':
+                return Cinnabar;
+            case 'Autumn':
+                return Autumn;
+            case 'Inchworm':
+                return Inchworm;
+            case 'Mint':
+                return Mint;
             case 'Azure':
                 return Azure;
-            case 'Lime':
-                return Lime;
+            case 'Cerulean':
+                return Cerulean;
+            case 'Wisteria':
+                return Wisteria;
+            case 'Rose':
+                return Rose;
+            case 'AmberSpruce':
+                return AmberSpruce;
+            case 'MustardSpruce':
+                return MustardSpruce;
+            case 'CinnabarSpruce':
+                return CinnabarSpruce;
+            case 'AutumnSpruce':
+                return AutumnSpruce;
+            case 'InchwormSpruce':
+                return InchwormSpruce;
+            case 'MintSpruce':
+                return MintSpruce;
+            case 'AzureSpruce':
+                return AzureSpruce;
+            case 'CeruleanSpruce':
+                return CeruleanSpruce;
+            case 'WisteriaSpruce':
+                return WisteriaSpruce;
+            case 'RoseSpruce':
+                return RoseSpruce;
+            case 'AmberSepia':
+                return AmberSepia;
+            case 'MustardSepia':
+                return MustardSepia;
+            case 'CinnabarSepia':
+                return CinnabarSepia;
+            case 'AutumnSepia':
+                return AutumnSepia;
+            case 'InchwormSepia':
+                return InchwormSepia;
+            case 'MintSepia':
+                return MintSepia;
+            case 'AzureSepia':
+                return AzureSepia;
+            case 'CeruleanSepia':
+                return CeruleanSepia;
+            case 'WisteriaSepia':
+                return WisteriaSepia;
+            case 'RoseSepia':
+                return RoseSepia;
+            case 'AmberMauve':
+                return AmberMauve;
+            case 'MustardMauve':
+                return MustardMauve;
+            case 'CinnabarMauve':
+                return CinnabarMauve;
+            case 'AutumnMauve':
+                return AutumnMauve;
+            case 'InchwormMauve':
+                return InchwormMauve;
+            case 'MintMauve':
+                return MintMauve;
+            case 'AzureMauve':
+                return AzureMauve;
+            case 'CeruleanMauve':
+                return CeruleanMauve;
+            case 'WisteriaMauve':
+                return WisteriaMauve;
+            case 'RoseMauve':
+                return RoseMauve;
+                case 'AmberWhiteGrey':
+                    return AmberWhiteGrey;
+                case 'MustardWhiteGrey':
+                    return MustardWhiteGrey;
+                case 'CinnabarWhiteGrey':
+                    return CinnabarWhiteGrey;
+                case 'AutumnWhiteGrey':
+                    return AutumnWhiteGrey;
+                case 'InchwormWhiteGrey':
+                    return InchwormWhiteGrey;
+                case 'MintWhiteGrey':
+                    return MintWhiteGrey;
+                case 'AzureWhiteGrey':
+                    return AzureWhiteGrey;
+                case 'CeruleanWhiteGrey':
+                    return CeruleanWhiteGrey;
+                case 'WisteriaWhiteGrey':
+                    return WisteriaWhiteGrey;
+                case 'RoseWhiteGrey':
+                    return RoseWhiteGrey;
+                    case 'AmberCream':
+                        return AmberCream;
+                    case 'MustardCream':
+                        return MustardCream;
+                    case 'CinnabarCream':
+                        return CinnabarCream;
+                    case 'AutumnCream':
+                        return AutumnCream;
+                    case 'InchwormCream':
+                        return InchwormCream;
+                    case 'MintCream':
+                        return MintCream;
+                    case 'AzureCream':
+                        return AzureCream;
+                    case 'CeruleanCream':
+                        return CeruleanCream;
+                    case 'WisteriaCream':
+                        return WisteriaCream;
+                    case 'RoseCream':
+                        return RoseCream;
             default: console.log("Invalid theme (" + theme + ")");
         }
     }, [theme])
+
+    NavigationBar.setBackgroundColorAsync(containerTheme.colors.card);
 
     // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS 
 
@@ -109,12 +222,13 @@ export default function MainContainer() {
                                             iconName = focused ? 'settings' : 'settings-outline';
                                         }
 
-                                        return <Ionicons name={iconName} size={size} color={color} />
+                                        return <Ionicons name={iconName} size={30} color={color} />
 
                                     },
                                     tabBarInactiveTintColor: '#aaaaaa',
                                     tabBarLabelStyle: { paddingBottom: 10, fontSize: 10 },
                                     tabBarStyle: { padding: 10, height: 70, borderTopWidth: 1 },
+                                    tabBarShowLabel: false,
                                     headerStyle: { borderBottomWidth: 1 },
                                     headerTitleAlign: 'center',
                                     headerTitleStyle: { fontSize: 20 },
