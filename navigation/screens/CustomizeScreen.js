@@ -22,6 +22,8 @@ export default function CustomizeScreen({ navigation }) {
     const [, updateState] = React.useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
 
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+
     const { setTheme } = useContext(ThemeContext);
     const { setBadgeCount, badgeCount } = useContext(BadgeContext);
     const { customizeAchieved1, setCustomizeAchieved1, customizeAchieved2, setCustomizeAchieved2, setCustomizeMedal1, setCustomizeMedal2 } = useContext(MedalContext);
@@ -45,93 +47,79 @@ export default function CustomizeScreen({ navigation }) {
 
     })
 
+    const waitSecond = async () => {
+        await delay(1000);
+        console.log('second');
+        setThemeHighlight(colors.container);
+    }
+
     const accentSelectionAmber = useMemo(() => {
         if (colors.background == '#161619') return 'AmberSpruce';
-        else if (colors.background == '#1a1716') return 'AmberSepia';
         else if (colors.background == '#17131c') return 'AmberMauve';
         else if (colors.background == '#ffffff') return 'AmberWhiteGrey';
-        else if (colors.background == '#fffef2') return 'AmberCream';
         else return 'Amber';
     }, [colors.background])
 
     const accentSelectionMustard = useMemo(() => {
         if (colors.background == '#161619') return 'MustardSpruce';
-        else if (colors.background == '#1a1716') return 'MustardSepia';
         else if (colors.background == '#17131c') return 'MustardMauve';
         else if (colors.background == '#ffffff') return 'MustardWhiteGrey';
-        else if (colors.background == '#fffef2') return 'MustardCream';
         else return 'Mustard';
     }, [colors.background])
 
     const accentSelectionCinnabar = useMemo(() => {
         if (colors.background == '#161619') return 'CinnabarSpruce';
-        else if (colors.background == '#1a1716') return 'CinnabarSepia';
         else if (colors.background == '#17131c') return 'CinnabarMauve';
         else if (colors.background == '#ffffff') return 'CinnabarWhiteGrey';
-        else if (colors.background == '#fffef2') return 'CinnabarCream';
         else return 'Cinnabar';
     }, [colors.background])
 
     const accentSelectionAutumn = useMemo(() => {
         if (colors.background == '#161619') return 'AutumnSpruce';
-        else if (colors.background == '#1a1716') return 'AutumnSepia';
         else if (colors.background == '#17131c') return 'AutumnMauve';
         else if (colors.background == '#ffffff') return 'AutumnWhiteGrey';
-        else if (colors.background == '#fffef2') return 'AutumnCream';
         else return 'Autumn';
     }, [colors.background])
 
     const accentSelectionInchworm = useMemo(() => {
         if (colors.background == '#161619') return 'InchwormSpruce';
-        else if (colors.background == '#1a1716') return 'InchwormSepia';
         else if (colors.background == '#17131c') return 'InchwormMauve';
         else if (colors.background == '#ffffff') return 'InchwormWhiteGrey';
-        else if (colors.background == '#fffef2') return 'InchwormCream';
         else return 'Inchworm';
     }, [colors.background])
 
     const accentSelectionMint = useMemo(() => {
         if (colors.background == '#161619') return 'MintSpruce';
-        else if (colors.background == '#1a1716') return 'MintSepia';
         else if (colors.background == '#17131c') return 'MintMauve';
         else if (colors.background == '#ffffff') return 'MintWhiteGrey';
-        else if (colors.background == '#fffef2') return 'MintCream';
         else return 'Mint';
     }, [colors.background])
 
     const accentSelectionAzure = useMemo(() => {
         if (colors.background == '#161619') return 'AzureSpruce';
-        else if (colors.background == '#1a1716') return 'AzureSepia';
         else if (colors.background == '#17131c') return 'AzureMauve';
         else if (colors.background == '#ffffff') return 'AzureWhiteGrey';
-        else if (colors.background == '#fffef2') return 'AzureCream';
         else return 'Azure';
     }, [colors.background])
 
     const accentSelectionCerulean = useMemo(() => {
         if (colors.background == '#161619') return 'CeruleanSpruce';
-        else if (colors.background == '#1a1716') return 'CeruleanSepia';
         else if (colors.background == '#17131c') return 'CeruleanMauve';
         else if (colors.background == '#ffffff') return 'CeruleanWhiteGrey';
-        else if (colors.background == '#fffef2') return 'CeruleanCream';
         else return 'Cerulean';
     }, [colors.background])
 
     const accentSelectionWisteria = useMemo(() => {
         if (colors.background == '#161619') return 'WisteriaSpruce';
-        else if (colors.background == '#1a1716') return 'WisteriaSepia';
         else if (colors.background == '#17131c') return 'WisteriaMauve';
         else if (colors.background == '#ffffff') return 'WisteriaWhiteGrey';
-        else if (colors.background == '#fffef2') return 'WisteriaCream';
         else return 'Wisteria';
     }, [colors.background])
 
     const accentSelectionRose = useMemo(() => {
         if (colors.background == '#161619') return 'RoseSpruce';
-        else if (colors.background == '#1a1716') return 'RoseSepia';
         else if (colors.background == '#17131c') return 'RoseMauve';
         else if (colors.background == '#ffffff') return 'RoseWhiteGrey';
-        else if (colors.background == '#fffef2') return 'RoseCream';
         else return 'Rose';
     }, [colors.background])
 
@@ -161,19 +149,6 @@ export default function CustomizeScreen({ navigation }) {
         else if (colors.primary == '#F991CC') return 'RoseSpruce';
     }, [colors.primary])
 
-    const baseSelectionSepia = useMemo(() => {
-        if (colors.primary == '#FFBF00') return 'AmberSepia';
-        else if (colors.primary == '#FFD95D') return 'MustardSepia';
-        else if (colors.primary == '#F24333') return 'CinnabarSepia';
-        else if (colors.primary == '#E67B35') return 'AutumnSepia';
-        else if (colors.primary == '#A1E44D') return 'InchwormSepia';
-        else if (colors.primary == '#71ECB3') return 'MintSepia';
-        else if (colors.primary == '#2A92FA') return 'AzureSepia';
-        else if (colors.primary == '#89BBFE') return 'CeruleanSepia';
-        else if (colors.primary == '#BC96E6') return 'WisteriaSepia';
-        else if (colors.primary == '#F991CC') return 'RoseSepia';
-    }, [colors.primary])
-
     const baseSelectionMauve = useMemo(() => {
         if (colors.primary == '#FFBF00') return 'AmberMauve';
         else if (colors.primary == '#FFD95D') return 'MustardMauve';
@@ -200,18 +175,9 @@ export default function CustomizeScreen({ navigation }) {
         else if (colors.primary == '#F991CC') return 'RoseWhiteGrey';
     }, [colors.primary])
 
-    const baseSelectionCream = useMemo(() => {
-        if (colors.primary == '#FFBF00') return 'AmberCream';
-        else if (colors.primary == '#FFD95D') return 'MustardCream';
-        else if (colors.primary == '#F24333') return 'CinnabarCream';
-        else if (colors.primary == '#E67B35') return 'AutumnCream';
-        else if (colors.primary == '#A1E44D') return 'InchwormCream';
-        else if (colors.primary == '#71ECB3') return 'MintCream';
-        else if (colors.primary == '#2A92FA') return 'AzureCream';
-        else if (colors.primary == '#89BBFE') return 'CeruleanCream';
-        else if (colors.primary == '#BC96E6') return 'WisteriaCream';
-        else if (colors.primary == '#F991CC') return 'RoseCream';
-    }, [colors.primary])
+    const randomizeTheme = () => {
+        console.log('randomize pressed');
+    }
 
     // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS 
 
@@ -226,7 +192,7 @@ export default function CustomizeScreen({ navigation }) {
                         setDisplayThemes('flex')
                         setDisplayEffects('none')
                     }}
-                    style={[styles.tabHeader, { backgroundColor: themeHighlight, borderBottomStartRadius: 23 }]} activeOpacity={.35}>
+                    style={[styles.tabHeader, {backgroundColor: themeHighlight , borderBottomStartRadius: 23 }]} activeOpacity={.35}>
                     <Text style={[styles.tabHeaderText, {color: colors.basicText}]}>Theme</Text>
                 </TouchableOpacity>
 
@@ -339,7 +305,11 @@ export default function CustomizeScreen({ navigation }) {
 
                 <Card style={[styles.themeCard, { elevation: 3, backgroundColor: colors.container, borderColor: colors.basicBorder, marginTop: 0 }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(baseSelectionGrey)}>
+                        onPress={() => {
+                            setTheme(baseSelectionGrey);
+                            setThemeHighlight('#3d3d3d');
+                            setEffectsHighlight('#181818');
+                        }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/darkGreyIcon.png')}></Image>
                         <Text style={[styles.themeCardText, {color: colors.basicText}]}>Dark / Grey</Text>
                     </TouchableOpacity>
@@ -347,7 +317,23 @@ export default function CustomizeScreen({ navigation }) {
 
                 <Card style={[styles.themeCard, { elevation: 3, backgroundColor: colors.container, borderColor: colors.basicBorder, marginTop: 0 }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(baseSelectionSpruce)}>
+                        onPress={() => {
+                            setTheme(baseSelectionWhiteGrey);
+                            setThemeHighlight('#E8E8E8');
+                            setEffectsHighlight('#ffffff');
+                        }}>
+                        <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/lightGreyIcon.png')}></Image>
+                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>White / Grey</Text>
+                    </TouchableOpacity>
+                </Card>
+
+                <Card style={[styles.themeCard, { elevation: 3, backgroundColor: colors.container, borderColor: colors.basicBorder}]}>
+                    <TouchableOpacity style={styles.themeCardTouchable}
+                        onPress={() => {
+                            setTheme(baseSelectionSpruce);
+                            setThemeHighlight('#3d3d45');
+                            setEffectsHighlight('#161619');
+                        }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/darkSpruceIcon.png')}></Image>
                         <Text style={[styles.themeCardText, {color: colors.basicText}]}>Dark / Spruce</Text>
                     </TouchableOpacity>
@@ -355,33 +341,21 @@ export default function CustomizeScreen({ navigation }) {
 
                 <Card style={[styles.themeCard, { elevation: 3, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(baseSelectionSepia)}>
-                        <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/darkSepiaIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Dark / Sepia</Text>
-                    </TouchableOpacity>
-                </Card>
-
-                <Card style={[styles.themeCard, { elevation: 3, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
-                    <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(baseSelectionMauve)}>
+                        onPress={() => {
+                            setTheme(baseSelectionMauve);
+                            setThemeHighlight('#423c4a');
+                            setEffectsHighlight('#17131c');
+                        }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/darkMauveIcon.png')}></Image>
                         <Text style={[styles.themeCardText, {color: colors.basicText}]}>Dark / Mauve</Text>
                     </TouchableOpacity>
                 </Card>
 
-                <Card style={[styles.themeCard, { elevation: 3, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
+                <Card style={[styles.themeCard, { elevation: 3, marginTop: 17, marginHorizontal: '26.5%', backgroundColor: colors.container, borderColor: colors.basicBorder, opacity: 0.35 }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(baseSelectionWhiteGrey)}>
-                        <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/lightGreyIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>White / Grey</Text>
-                    </TouchableOpacity>
-                </Card>
-
-                <Card style={[styles.themeCard, { elevation: 3, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
-                    <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(baseSelectionCream)}>
-                        <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/lightGreyIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>White / Cream</Text>
+                        onPress={() => randomizeTheme()}>
+                        <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/randomizeIcon.png')}></Image>
+                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Randomize</Text>
                     </TouchableOpacity>
                 </Card>
 

@@ -5,8 +5,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#181818',
+
         alignItems: 'center',
-        justifyContent: 'center',
     },
 
     // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER 
@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
         borderRadius: 500,
         borderColor: '#3d3d3d',
         borderWidth: 10,
+    },
+
+    tpsText: {
+        fontSize: 20,
+        paddingTop: 15
     },
 
     // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB 
@@ -138,10 +143,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start',
         backgroundColor: '#3d3d3d',
-        borderWidth: 1,
         paddingVertical: 7.5,
         marginTop: 10,
-        borderRadius: 10,
+        borderRadius: 35, // 10
         paddingLeft: '2.5%',
     },
 
@@ -159,6 +163,12 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
         paddingLeft: '2.5%',
+    },
+
+    medalHeaderText: {
+        fontSize: 30,
+        color: '#ffffff',
+        textAlign: 'center',
     },
 
     // MISC

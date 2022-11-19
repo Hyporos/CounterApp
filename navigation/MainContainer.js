@@ -7,10 +7,8 @@ import { StatusBar } from 'expo-status-bar';
 import {
     Amber, Mustard, Cinnabar, Autumn, Inchworm, Mint, Azure, Cerulean, Wisteria, Rose,
     AmberSpruce, MustardSpruce, CinnabarSpruce, AutumnSpruce, InchwormSpruce, MintSpruce, AzureSpruce, CeruleanSpruce, WisteriaSpruce, RoseSpruce,
-    AmberSepia, MustardSepia, CinnabarSepia, AutumnSepia, InchwormSepia, MintSepia, AzureSepia, CeruleanSepia, WisteriaSepia, RoseSepia,
     AmberMauve, MustardMauve, CinnabarMauve, AutumnMauve, InchwormMauve, MintMauve, AzureMauve, CeruleanMauve, WisteriaMauve, RoseMauve,
     AmberWhiteGrey, MustardWhiteGrey, CinnabarWhiteGrey, AutumnWhiteGrey, InchwormWhiteGrey, MintWhiteGrey, AzureWhiteGrey, CeruleanWhiteGrey, WisteriaWhiteGrey, RoseWhiteGrey,
-    AmberCream, MustardCream, CinnabarCream, AutumnCream, InchwormCream, MintCream, AzureCream, CeruleanCream, WisteriaCream, RoseCream,
 } from "../themes/Themes"
 
 import CounterScreen from './screens/CounterScreen';
@@ -44,6 +42,8 @@ export default function MainContainer() {
     const [countMedal4, setCountMedal4] = useState(0.25);
     const [countMedal5, setCountMedal5] = useState(0.25);
     const [countMedal6, setCountMedal6] = useState(0.25);
+    const [tapsMedal1, setTapsMedal1] = useState(0.25);
+    const [tapsMedal2, setTapsMedal2] = useState(0.25);
     const [customizeMedal1, setCustomizeMedal1] = useState(0.25);
     const [customizeMedal2, setCustomizeMedal2] = useState(0.25);
     const [secretMedal, setSecretMedal] = useState(0.25)
@@ -57,6 +57,8 @@ export default function MainContainer() {
         countMedal4, setCountMedal4,
         countMedal5, setCountMedal5,
         countMedal6, setCountMedal6,
+        tapsMedal1, setTapsMedal1,
+        tapsMedal2, setTapsMedal2,
         customizeMedal1, setCustomizeMedal1,
         customizeMedal2, setCustomizeMedal2,
         secretMedal, setSecretMedal,
@@ -106,26 +108,6 @@ export default function MainContainer() {
                 return WisteriaSpruce;
             case 'RoseSpruce':
                 return RoseSpruce;
-            case 'AmberSepia':
-                return AmberSepia;
-            case 'MustardSepia':
-                return MustardSepia;
-            case 'CinnabarSepia':
-                return CinnabarSepia;
-            case 'AutumnSepia':
-                return AutumnSepia;
-            case 'InchwormSepia':
-                return InchwormSepia;
-            case 'MintSepia':
-                return MintSepia;
-            case 'AzureSepia':
-                return AzureSepia;
-            case 'CeruleanSepia':
-                return CeruleanSepia;
-            case 'WisteriaSepia':
-                return WisteriaSepia;
-            case 'RoseSepia':
-                return RoseSepia;
             case 'AmberMauve':
                 return AmberMauve;
             case 'MustardMauve':
@@ -166,26 +148,6 @@ export default function MainContainer() {
                     return WisteriaWhiteGrey;
                 case 'RoseWhiteGrey':
                     return RoseWhiteGrey;
-                    case 'AmberCream':
-                        return AmberCream;
-                    case 'MustardCream':
-                        return MustardCream;
-                    case 'CinnabarCream':
-                        return CinnabarCream;
-                    case 'AutumnCream':
-                        return AutumnCream;
-                    case 'InchwormCream':
-                        return InchwormCream;
-                    case 'MintCream':
-                        return MintCream;
-                    case 'AzureCream':
-                        return AzureCream;
-                    case 'CeruleanCream':
-                        return CeruleanCream;
-                    case 'WisteriaCream':
-                        return WisteriaCream;
-                    case 'RoseCream':
-                        return RoseCream;
             default: console.log("Invalid theme (" + theme + ")");
         }
     }, [theme])

@@ -11,83 +11,133 @@ import { MedalContext } from '../../contexts/MedalContext';
 export default function MedalsScreen({ navigation }) {
 
     const { colors } = useTheme();
-    const { countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, customizeMedal1, customizeMedal2, secretMedal } = useContext(MedalContext);
+    const { countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, customizeMedal1, customizeMedal2, secretMedal, tapsMedal1, tapsMedal2 } = useContext(MedalContext);
 
     // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS 
 
     return (
         <ScrollView style={{ backgroundColor: colors.background }}>
-            <View style={[styles.medalCardContainer, {backgroundColor: colors.background}]}>
+
+            <View style={[styles.medalCardContainer, { backgroundColor: colors.background }]}>
+
+                <Text style={[styles.medalHeaderText, { color: colors.basicText }]}>Endurance</Text>
+
+                <View style={[styles.themeDivider, { borderColor: colors.border, marginBottom: 10 }]}></View>
 
                 <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: countMedal1 }]}>
                     <Ionicons name='radio-button-on-outline' size={50} color={colors.primary} />
                     <View>
-                        <Text style={[styles.medalCardTitle, {color: colors.basicText}]}>Getting Started</Text>
-                        <Text style={[styles.medalCardSubTitle, {color: colors.basicSubText}]}>Tap the button for the first time</Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Getting Started</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Tap the button for the first time</Text>
                     </View>
                 </View>
 
                 <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: countMedal2 }]}>
                     <Ionicons name='radio-button-on-outline' size={50} color={colors.primary} />
                     <View>
-                        <Text style={[styles.medalCardTitle, {color: colors.basicText}]}>Placeholder | Tap 2</Text>
-                        <Text style={[styles.medalCardSubTitle, {color: colors.basicSubText}]}>Tap the button 100 times</Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Warming up</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Tap the button 100 times</Text>
                     </View>
                 </View>
 
                 <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: countMedal3 }]}>
                     <Ionicons name='radio-button-on-outline' size={50} color={colors.primary} />
                     <View style={styles.medalTextContainer}>
-                        <Text style={[styles.medalCardTitle, {color: colors.basicText}]}>Placeholder | Tap 3</Text>
-                        <Text style={[styles.medalCardSubTitle, {color: colors.basicSubText}]}>Tap the button 1000 times</Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Casual Tapper</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Tap the button 1000 times</Text>
                     </View>
                 </View>
 
                 <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: countMedal4 }]}>
                     <Ionicons name='radio-button-on-outline' size={50} color={colors.primary} />
                     <View>
-                        <Text style={[styles.medalCardTitle, {color: colors.basicText}]}>Placeholder | Tap 4</Text>
-                        <Text style={[styles.medalCardSubTitle, {color: colors.basicSubText}]}>Tap the button 10000 times</Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Serious Tapper</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Tap the button 10000 times</Text>
                     </View>
                 </View>
 
                 <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: countMedal5 }]}>
                     <Ionicons name='radio-button-on-outline' size={50} color={colors.primary} />
                     <View>
-                        <Text style={[styles.medalCardTitle, {color: colors.basicText}]}>Placeholder | Tap 5</Text>
-                        <Text style={[styles.medalCardSubTitle, {color: colors.basicSubText}]}>Tap the button 100000 times</Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Carpal Tunnel</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Tap the button 100000 times</Text>
                     </View>
                 </View>
 
                 <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: countMedal6 }]}>
                     <Ionicons name='radio-button-on-outline' size={50} color={colors.primary} />
                     <View>
-                        <Text style={[styles.medalCardTitle, {color: colors.basicText}]}>Placeholder | Tap 6</Text>
-                        <Text style={[styles.medalCardSubTitle, {color: colors.basicSubText}]}>Tap the button 1000000 times</Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Congratulations, get a life!</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Tap the button 1000000 times</Text>
                     </View>
                 </View>
+
+                <Text style={[styles.medalHeaderText, { color: colors.basicText, marginTop: 10 }]}>Speed</Text>
+
+                <View style={[styles.themeDivider, { borderColor: colors.border, marginBottom: 10 }]}></View>
+
+                <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: tapsMedal1 }]}>
+                    <Ionicons name='time' size={50} color={colors.primary} />
+                    <View>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Placeholder | TPS 1</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Reach 10 taps per second</Text>
+                    </View>
+                </View>
+
+                <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: tapsMedal2 }]}>
+                    <Ionicons name='time' size={50} color={colors.primary} />
+                    <View>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Placeholder | TPS 2</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Reach 15 taps per second</Text>
+                    </View>
+                </View>
+
+                <Text style={[styles.medalHeaderText, { color: colors.basicText, marginTop: 10 }]}>Customization</Text>
+
+                <View style={[styles.themeDivider, { borderColor: colors.border, marginBottom: 10 }]}></View>
 
                 <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: customizeMedal1 }]}>
                     <Ionicons name='color-palette' size={50} color={colors.primary} />
                     <View>
-                        <Text style={[styles.medalCardTitle, {color: colors.basicText}]}>Pablo Picasso</Text>
-                        <Text style={[styles.medalCardSubTitle, {color: colors.basicSubText}]}>Change the theme accent for the first time</Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Pablo Picasso</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Change the theme accent for the first time</Text>
                     </View>
                 </View>
 
                 <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: customizeMedal2 }]}>
                     <Ionicons name='color-wand' size={50} color={colors.primary} />
                     <View>
-                        <Text style={[styles.medalCardTitle, {color: colors.basicText}]}>Placeholder | Customize 2</Text>
-                        <Text style={[styles.medalCardSubTitle, {color: colors.basicSubText}]}>Select an effect for the first time</Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Placeholder | Customize 2</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Select an effect for the first time</Text>
+                    </View>
+                </View>
+
+                <Text style={[styles.medalHeaderText, { color: colors.basicText, marginTop: 10 }]}>Secrets</Text>
+
+                <View style={[styles.themeDivider, { borderColor: colors.border, marginBottom: 10 }]}></View>
+
+                <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: secretMedal }]}>
+                    <Ionicons name='help' size={50} color={colors.primary} />
+                    <View>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Secret 1</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}></Text>
                     </View>
                 </View>
 
                 <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: secretMedal }]}>
                     <Ionicons name='help' size={50} color={colors.primary} />
                     <View>
-                        <Text style={[styles.medalCardTitle, {color: colors.basicText}]}>Placeholder | Secret 1</Text>
-                        <Text style={[styles.medalCardSubTitle, {color: colors.basicSubText}]}>Maybe it's in the source code?</Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Secret 2</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}></Text>
+                    </View>
+                </View>
+
+
+                <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: secretMedal }]}>
+                    <Ionicons name='help' size={50} color={colors.primary} />
+                    <View>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Secret 3</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Maybe it's in the source code?</Text>
                     </View>
                 </View>
 
