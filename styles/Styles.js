@@ -11,19 +11,22 @@ const styles = StyleSheet.create({
 
     // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER // COUNTER 
 
-    counterButton: {
+    buttonCounter: {
         justifyContent: 'center',
         alignItems: 'center',
         width: 250,
         height: 250,
         borderRadius: 500,
-        borderColor: '#3d3d3d',
-        borderWidth: 10,
     },
 
-    tpsText: {
+    tpsCounter: {
         fontSize: 20,
         paddingTop: 15
+    },
+
+    buttonContainer: {
+        borderRadius: 500,
+        marginTop: '47%',
     },
 
     // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB // TAB 

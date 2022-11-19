@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useContext, useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { Card } from 'react-native-paper';
 import { styles } from "../../styles/Styles";
 import { useTheme } from '@react-navigation/native';
 
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { MedalContext } from '../../contexts/MedalContext';
-import { BadgeContext } from '../../contexts/BadgeContext';
 
 // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS 
 
@@ -25,8 +24,7 @@ export default function CustomizeScreen({ navigation }) {
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
     const { setTheme } = useContext(ThemeContext);
-    const { setBadgeCount, badgeCount } = useContext(BadgeContext);
-    const { customizeAchieved1, setCustomizeAchieved1, customizeAchieved2, setCustomizeAchieved2, setCustomizeMedal1, setCustomizeMedal2 } = useContext(MedalContext);
+    const { setBadgeCount, badgeCount, customizeAchieved1, setCustomizeAchieved1, customizeAchieved2, setCustomizeAchieved2, setCustomizeMedal1, setCustomizeMedal2 } = useContext(MedalContext);
 
     useEffect(() => {
 

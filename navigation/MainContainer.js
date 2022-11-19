@@ -17,8 +17,6 @@ import SettingsScreen from './screens/SettingsScreen';
 import MedalsScreen from './screens/MedalsScreen';
 
 import { ThemeContext } from '../contexts/ThemeContext';
-import { CountContext } from '../contexts/CountContext';
-import { BadgeContext } from '../contexts/BadgeContext';
 import { MedalContext } from '../contexts/MedalContext';
 
 // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS 
@@ -33,7 +31,7 @@ export default function MainContainer() {
     const Tab = createBottomTabNavigator();
 
     const [theme, setTheme] = useState('Amber');
-    const [counter, setCounter] = useState(0);
+
     const [badgeCount, setBadgeCount] = useState(0);
 
     const [countMedal1, setCountMedal1] = useState(0.25);
@@ -47,10 +45,10 @@ export default function MainContainer() {
     const [customizeMedal1, setCustomizeMedal1] = useState(0.25);
     const [customizeMedal2, setCustomizeMedal2] = useState(0.25);
     const [secretMedal, setSecretMedal] = useState(0.25)
-    const [achieved, setAchieved] = useState(false);
     const [customizeAchieved1, setCustomizeAchieved1] = useState(false);
 
     const medalData = {
+        badgeCount, setBadgeCount,
         countMedal1, setCountMedal1,
         countMedal2, setCountMedal2,
         countMedal3, setCountMedal3,
@@ -62,7 +60,6 @@ export default function MainContainer() {
         customizeMedal1, setCustomizeMedal1,
         customizeMedal2, setCustomizeMedal2,
         secretMedal, setSecretMedal,
-        achieved, setAchieved,
         customizeAchieved1, setCustomizeAchieved1
     };
 
@@ -160,8 +157,6 @@ export default function MainContainer() {
 
         <ThemeContext.Provider value={{ theme, setTheme }}>
             <MedalContext.Provider value={medalData}>
-                <BadgeContext.Provider value={{ badgeCount, setBadgeCount }}>
-                    <CountContext.Provider value={{ counter, setCounter }}>
                         <NavigationContainer theme={containerTheme}>
 
                             <StatusBar style="auto" />
@@ -211,8 +206,6 @@ export default function MainContainer() {
                             </Tab.Navigator>
 
                         </NavigationContainer>
-                    </CountContext.Provider>
-                </BadgeContext.Provider>
             </MedalContext.Provider>
         </ThemeContext.Provider>
 
