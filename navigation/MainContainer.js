@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -44,7 +44,9 @@ export default function MainContainer() {
     const [tapsMedal2, setTapsMedal2] = useState(0.25);
     const [customizeMedal1, setCustomizeMedal1] = useState(0.25);
     const [customizeMedal2, setCustomizeMedal2] = useState(0.25);
-    const [secretMedal, setSecretMedal] = useState(0.25)
+    const [secretMedal1, setSecretMedal1] = useState(0.25);
+    const [secretMedal2, setSecretMedal2] = useState(0.25);
+    const [secretMedal3, setSecretMedal3] = useState(0.25);
     const [customizeAchieved1, setCustomizeAchieved1] = useState(false);
 
     const medalData = {
@@ -59,7 +61,9 @@ export default function MainContainer() {
         tapsMedal2, setTapsMedal2,
         customizeMedal1, setCustomizeMedal1,
         customizeMedal2, setCustomizeMedal2,
-        secretMedal, setSecretMedal,
+        secretMedal1, setSecretMedal1,
+        secretMedal2, setSecretMedal2,
+        secretMedal3, setSecretMedal3,
         customizeAchieved1, setCustomizeAchieved1
     };
 
@@ -150,6 +154,10 @@ export default function MainContainer() {
     }, [theme])
 
     NavigationBar.setBackgroundColorAsync(containerTheme.colors.card);
+
+    useEffect(() => {
+        if (countMedal1 == 1) setBadgeCount(badgeCount + 1);
+    }, [countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, tapsMedal1, tapsMedal2, customizeMedal1, customizeMedal2])
 
     // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS 
 

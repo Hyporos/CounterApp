@@ -12,44 +12,21 @@ import { MedalContext } from '../../contexts/MedalContext';
 export default function CustomizeScreen({ navigation }) {
 
     const { colors } = useTheme();
+    const { setTheme } = useContext(ThemeContext);
 
     const [themeHighlight, setThemeHighlight] = useState(colors.container);
     const [effectsHighlight, setEffectsHighlight] = useState(colors.background);
     const [displayThemes, setDisplayThemes] = useState('flex');
     const [displayEffects, setDisplayEffects] = useState('none');
 
-    const [, updateState] = React.useState();
-    const forceUpdate = React.useCallback(() => updateState({}), []);
-
-    const delay = ms => new Promise(res => setTimeout(res, ms));
-
-    const { setTheme } = useContext(ThemeContext);
-    const { setBadgeCount, badgeCount, customizeAchieved1, setCustomizeAchieved1, customizeAchieved2, setCustomizeAchieved2, setCustomizeMedal1, setCustomizeMedal2 } = useContext(MedalContext);
+    const {setCustomizeMedal1, setCustomizeMedal2 } = useContext(MedalContext);
 
     useEffect(() => {
 
-        //if (colors.container != themeHighlight) {
-        //    setThemeHighlight(colors.container);
-        //}
-
-        if (colors.primary != '#FFBF00' && customizeAchieved1 == false) {
-            setCustomizeMedal1(1);
-            setBadgeCount(badgeCount + 1)
-            setCustomizeAchieved1(true);
-        }
-        if (colors.primary == '#aaaaaa' && customizeAchieved2 == false) {
-            setCustomizeMedal2(1);
-            setBadgeCount(badgeCount + 1)
-            setCustomizeAchieved2(true);
-        }
+        if (colors.primary != '#FFBF00') setCustomizeMedal1(1);
+        if (colors.primary == '#aaaaaa') setCustomizeMedal2(1);
 
     })
-
-    const waitSecond = async () => {
-        await delay(1000);
-        console.log('second');
-        setThemeHighlight(colors.container);
-    }
 
     const accentSelectionAmber = useMemo(() => {
         if (colors.background == '#161619') return 'AmberSpruce';

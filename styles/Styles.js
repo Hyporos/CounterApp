@@ -176,6 +176,49 @@ const styles = StyleSheet.create({
 
     // MISC
 
+    settingsCardContainer: {
+        backgroundColor: '#181818',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'stretch',
+        marginTop: 10,
+        marginBottom: 20,
+        paddingHorizontal: 10,
+    },
+
+    settingsCard: {
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        backgroundColor: '#3d3d3d',
+        paddingVertical: 7.5,
+        marginTop: 6,
+        borderRadius: 5, // 10
+        paddingLeft: '2.5%',
+    },
+
+    settingsCardTitle: {
+        alignSelf: 'baseline',
+        color: '#ffffff',
+        fontSize: 20,
+        textAlign: 'center',
+        paddingLeft: '2.5%',
+        paddingBottom: 5
+    },
+
+    settingsCardSubTitle: {
+        alignSelf: 'baseline',
+        color: '#aaaaaa',
+        fontSize: 15,
+        textAlign: 'center',
+        paddingLeft: '2.5%',
+    },
+
+    settingsHeaderText: {
+        fontSize: 30,
+        color: '#ffffff',
+        textAlign: 'center',
+    },
+
 });
 
 export { styles }

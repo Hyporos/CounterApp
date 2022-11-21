@@ -1,19 +1,23 @@
 import React, { useContext } from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { styles } from "../../styles/Styles";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { MedalContext } from '../../contexts/MedalContext';
 
-// IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS 
+// ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― //
 
 export default function MedalsScreen({ navigation }) {
 
     const { colors } = useTheme();
-    const { countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, customizeMedal1, customizeMedal2, secretMedal, tapsMedal1, tapsMedal2 } = useContext(MedalContext);
+    const { countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, customizeMedal1, customizeMedal2, secretMedal1, secretMedal2, secretMedal3, tapsMedal1, tapsMedal2 } = useContext(MedalContext);
 
-    // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS 
+    const secretButton = () => {
+        
+    }
+
+    // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― //
 
     return (
         <ScrollView style={{ backgroundColor: colors.background }}>
@@ -65,7 +69,9 @@ export default function MedalsScreen({ navigation }) {
                 </View>
 
                 <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: countMedal6 }]}>
-                    <Ionicons name='radio-button-on-outline' size={50} color={colors.primary} />
+                    <TouchableOpacity>
+                        <Ionicons name='radio-button-on-outline' size={50} color={colors.primary} />
+                    </TouchableOpacity>
                     <View>
                         <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Congratulations, get a life!</Text>
                         <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Tap the button 1000000 times</Text>
@@ -116,27 +122,26 @@ export default function MedalsScreen({ navigation }) {
 
                 <View style={[styles.themeDivider, { borderColor: colors.border, marginBottom: 10 }]}></View>
 
-                <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: secretMedal }]}>
+                <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: secretMedal1 }]}>
                     <Ionicons name='help' size={50} color={colors.primary} />
                     <View>
-                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Secret 1</Text>
-                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}></Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Wrong button, dude</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Tap a certain button 10 times</Text>
                     </View>
                 </View>
 
-                <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: secretMedal }]}>
+                <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: secretMedal2 }]}>
                     <Ionicons name='help' size={50} color={colors.primary} />
                     <View>
-                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Secret 2</Text>
-                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}></Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>What could this order be?</Text>
+                        <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>2 7 9 1 3 6 4 8 10 5</Text>
                     </View>
                 </View>
 
-
-                <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: secretMedal }]}>
+                <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: secretMedal3 }]}>
                     <Ionicons name='help' size={50} color={colors.primary} />
                     <View>
-                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Secret 3</Text>
+                        <Text style={[styles.medalCardTitle, { color: colors.basicText }]}>Ethical Hacker</Text>
                         <Text style={[styles.medalCardSubTitle, { color: colors.basicSubText }]}>Maybe it's in the source code?</Text>
                     </View>
                 </View>

@@ -10,7 +10,7 @@ import { MedalContext } from '../../contexts/MedalContext';
 const CounterScreen = () => {
 
     const { colors } = useTheme();
-    const { badgeCount, setBadgeCount, countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, setCountMedal1, setCountMedal2, setCountMedal3, setCountMedal4, setCountMedal5, setCountMedal6, setTapsMedal1, setTapsMedal2, tapsMedal1, tapsMedal2 } = useContext(MedalContext);
+    const { setCountMedal1, setCountMedal2, setCountMedal3, setCountMedal4, setCountMedal5, setCountMedal6, setTapsMedal1, setTapsMedal2 } = useContext(MedalContext);
 
     const [counter, setCounter] = useState(0);
     const [tapsPerSecond, setTapsPerSecond] = useState(0);
@@ -27,12 +27,8 @@ const CounterScreen = () => {
         if (counter == 99999) setCountMedal5(1);
         if (counter == 999999) setCountMedal6(1);
         if (tapsPerSecond >= 10) setTapsMedal1(1);
-        if (tapsPerSecond >= 15) setTapsMedal2(1); 
+        if (tapsPerSecond >= 15) setTapsMedal2(1);
     }
-
-    useEffect(() => {
-        if (counter != 0) setBadgeCount(badgeCount + 1);
-    }, [countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, tapsMedal1, tapsMedal2])
 
     // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― //
 
