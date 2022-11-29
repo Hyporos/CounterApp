@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { styles } from "../../styles/Styles";
@@ -11,11 +11,11 @@ import { MedalContext } from '../../contexts/MedalContext';
 export default function MedalsScreen({ navigation }) {
 
     const { colors } = useTheme();
-    const { countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, customizeMedal1, customizeMedal2, secretMedal1, secretMedal2, secretMedal3, tapsMedal1, tapsMedal2 } = useContext(MedalContext);
+    const { countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, customizeMedal1, customizeMedal2, secretMedal1, setSecretMedal1, secretMedal2, secretMedal3, tapsMedal1, tapsMedal2 } = useContext(MedalContext);
 
-    const secretButton = () => {
-        
-    }
+    const [secretCount, setSecretCount] = useState(1);
+
+    const secretButton = () => { if (secretCount >= 10) setSecretMedal1(1); }
 
     // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― //
 
@@ -69,7 +69,10 @@ export default function MedalsScreen({ navigation }) {
                 </View>
 
                 <View style={[styles.medalCard, { backgroundColor: colors.container, borderColor: colors.border, opacity: countMedal6 }]}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                        setSecretCount(secretCount + 1);
+                        secretButton();
+                        }}>
                         <Ionicons name='radio-button-on-outline' size={50} color={colors.primary} />
                     </TouchableOpacity>
                     <View>

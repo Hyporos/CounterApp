@@ -219,6 +219,74 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
 
+    // MODAL
+
+    modalContainer: {
+        justifyContent: 'center',
+        width: 300,
+        height: 300,
+        borderRadius: 10,
+        borderWidth: .5,
+    },
+
+    modalMainView: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1,
+        width: '100%',
+        height: '100%',
+    },
+
+    modalHeaderText: {
+        alignSelf: 'center',
+        fontSize: 30,
+        color: '#ffffff',
+    },
+
+    modalSubText: {
+        alignSelf: 'center',
+        fontSize: 15,
+        color: '#aaaaaa',
+    },
+
+    modalInfoText: {
+        alignSelf: 'center',
+        fontSize: 15,
+        color: '#aaaaaa',
+        marginTop: 10,
+    },
+
+    modalDivider: {
+        borderBottomWidth: .5,
+        marginHorizontal: 25,
+        marginVertical: 10,
+        opacity: 0.75,
+        borderRadius: 50
+    },
+
+    contactInput: {
+        marginHorizontal: 10,
+        color: '#ffffff'
+    },
+
+    contactSubmit: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginHorizontal: 50,
+        paddingVertical: 2.5,
+        borderRadius: 10,
+        marginTop: 10
+    },
+
+    contactInfoText: {
+        alignSelf: 'center',
+        fontSize: 15,
+        color: '#aaaaaa',
+        marginVertical: 10,
+        textAlign: 'center'
+    },
+
 });
 
 export { styles }

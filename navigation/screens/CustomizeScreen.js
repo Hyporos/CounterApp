@@ -154,6 +154,12 @@ export default function CustomizeScreen({ navigation }) {
         console.log('randomize pressed');
     }
 
+    //            --------------------------------------------------------------------------- //
+
+    const secretOrder = () => {
+        if (colors.primary == '#FFD95D') console.log('test');
+    }
+
     // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS 
 
     return (
@@ -186,7 +192,7 @@ export default function CustomizeScreen({ navigation }) {
 
             <Text style={[styles.themeHeaderText, {color: colors.basicText}]}>Accent</Text>
 
-            <View style={[styles.themeDivider, { borderColor: colors.border }]}></View>
+            <View style={[styles.modalDivider, { borderColor: colors.border }]}></View>
 
             <View style={[styles.themeCardContainer, { backgroundColor: colors.background, display: displayThemes }]}>
 
@@ -200,7 +206,10 @@ export default function CustomizeScreen({ navigation }) {
 
                 <Card style={[styles.themeCard, { elevation: 5, backgroundColor: colors.container, borderColor: colors.basicBorder, marginTop: 0 }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(accentSelectionMustard)}>
+                        onPress={() => { 
+                            setTheme(accentSelectionMustard);
+                            secretOrder();
+                            }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/mustardIcon.png')}></Image>
                         <Text style={[styles.themeCardText, {color: colors.basicText}]}>Mustard</Text>
                     </TouchableOpacity>
