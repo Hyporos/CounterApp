@@ -21,6 +21,9 @@ export default function SettingsScreen({ navigation }) {
   const [value, setValue] = useState('first');
 
   const [isAvailable, setIsAvailable] = useState(false);
+  const [subject, setSubject] = useState(undefined);
+  const [body, setBody] = useState(undefined);
+
   useEffect(() => {
     async function checkAvailability() {
       const isMailAvailable = await MailComposer.isAvailableAsync();
@@ -28,6 +31,14 @@ export default function SettingsScreen({ navigation }) {
     }
     checkAvailability();
   }, []);
+
+  const sendMail = () => {
+    MailComposer.composeAsync({
+      subject: subject,
+      body: body,
+      recipients: ["brian@maleki.dev"]
+    });
+  };
 
   // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― //
 
@@ -51,6 +62,8 @@ export default function SettingsScreen({ navigation }) {
 
               <View style={{ marginHorizontal: 25, backgroundColor: colors.container, borderRadius: 5 }}>
                 <TextInput
+                  value={subject}
+                  onChangeText={setSubject}
                   style={[styles.contactInput, { marginVertical: 5 }]}
                   cursorColor={colors.primary}
                   selectionColor={colors.primary}
@@ -60,9 +73,11 @@ export default function SettingsScreen({ navigation }) {
 
               <View style={{ marginHorizontal: 25, backgroundColor: colors.container, borderRadius: 5, marginTop: 15 }}>
                 <TextInput
+                  value={body}
+                  onChangeText={setBody}
                   style={[styles.contactInput, { marginVertical: 10 }]}
                   cursorColor={colors.primary}
-                  placeholder="Description"
+                  placeholder="Body"
                   multiline={true}
                 />
               </View>
@@ -73,11 +88,22 @@ export default function SettingsScreen({ navigation }) {
                 <Text style={styles.contactInfoText}>When submitting bug reports, please specify if using Android or iOS</Text>
               </View>
 
-              <TouchableOpacity>
-                <View style={[styles.contactSubmit, {backgroundColor: colors.primary}]}>
-                  <Ionicons name='mail' size={27.5} color={'#4d4d4d'} />
+              {isAvailable ?
+                <TouchableOpacity onPress={() => {
+                  sendMail()
+                  setContactModalVisible(false)
+                  setSubject(undefined)
+                  setBody(undefined)
+                }}>
+                  <View style={[styles.contactSubmit, { backgroundColor: colors.primary }]}>
+                    <Ionicons name='mail' size={27.5} color={'#4d4d4d'} />
+                  </View>
+                </TouchableOpacity>
+                :
+                <View style={[styles.contactSubmit, { backgroundColor: colors.notification }]}>
+                  <Text style={{ fontSize: 17.5 }}>Feature Unavailable</Text>
                 </View>
-              </TouchableOpacity>
+              }
             </View>
 
           </View>
@@ -203,7 +229,7 @@ export default function SettingsScreen({ navigation }) {
 
         <View style={[styles.themeDivider, { borderColor: colors.border, marginBottom: 5 }]}></View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => Linking.openURL("https://play.google.com/store/apps/details?id=com.spotify.s4a")}>
           <View style={[styles.settingsCard, { backgroundColor: colors.container }]}>
             <Text style={[styles.settingsCardTitle, { color: colors.basicText }]}>Rate Counter</Text>
             <Text style={[styles.settingsCardSubTitle, { color: colors.basicSubText }]}>If you are enjoying the app, please leave a rating!</Text>
@@ -227,7 +253,7 @@ export default function SettingsScreen({ navigation }) {
         <TouchableOpacity onPress={() => setAboutModalVisible(true)}>
           <View style={[styles.settingsCard, { backgroundColor: colors.container }]}>
             <Text style={[styles.settingsCardTitle, { color: colors.basicText }]}>About Counter</Text>
-            <Text style={[styles.settingsCardSubTitle, { color: colors.basicSubText }]}>View information about the app and founder</Text>
+            <Text style={[styles.settingsCardSubTitle, { color: colors.basicSubText }]}>View information about the app and developer</Text>
           </View>
         </TouchableOpacity>
 

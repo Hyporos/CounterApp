@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { Card } from 'react-native-paper';
 import { styles } from "../../styles/Styles";
 import { useTheme } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { MedalContext } from '../../contexts/MedalContext';
@@ -192,7 +193,7 @@ export default function CustomizeScreen({ navigation }) {
 
             <Text style={[styles.themeHeaderText, {color: colors.basicText}]}>Accent</Text>
 
-            <View style={[styles.modalDivider, { borderColor: colors.border }]}></View>
+            <View style={[styles.themeDivider, { borderColor: colors.border }]}></View>
 
             <View style={[styles.themeCardContainer, { backgroundColor: colors.background, display: displayThemes }]}>
 

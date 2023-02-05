@@ -19,7 +19,7 @@ import MedalsScreen from './screens/MedalsScreen';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { MedalContext } from '../contexts/MedalContext';
 
-// IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS // IMPORTS 
+  // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― //
 
 export default function MainContainer() {
 
@@ -159,7 +159,7 @@ export default function MainContainer() {
         if (countMedal1 == 1) setBadgeCount(badgeCount + 1);
     }, [countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, tapsMedal1, tapsMedal2, customizeMedal1, customizeMedal2, secretMedal1])
 
-    // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS // DECLARATIONS 
+  // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― //
 
     return (
 
@@ -197,6 +197,7 @@ export default function MainContainer() {
                                     headerStyle: { borderBottomWidth: 1 },
                                     headerTitleAlign: 'center',
                                     headerTitleStyle: { fontSize: 20 },
+                                    tabBarHideOnKeyboard: true,
                                 })}>
 
                                 <Tab.Screen name={counterName} component={CounterScreen} />

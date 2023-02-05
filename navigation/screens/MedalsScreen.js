@@ -3,6 +3,7 @@ import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { styles } from "../../styles/Styles";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { MedalContext } from '../../contexts/MedalContext';
 
@@ -15,7 +16,9 @@ export default function MedalsScreen({ navigation }) {
 
     const [secretCount, setSecretCount] = useState(1);
 
-    const secretButton = () => { if (secretCount >= 10) setSecretMedal1(1); }
+    const secretButton = () => {
+        if (secretCount >= 10) setSecretMedal1(1);
+    }
 
     // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― //
 
@@ -72,7 +75,7 @@ export default function MedalsScreen({ navigation }) {
                     <TouchableOpacity onPress={() => {
                         setSecretCount(secretCount + 1);
                         secretButton();
-                        }}>
+                    }}>
                         <Ionicons name='radio-button-on-outline' size={50} color={colors.primary} />
                     </TouchableOpacity>
                     <View>
