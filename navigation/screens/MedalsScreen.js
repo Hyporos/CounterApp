@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { styles } from "../../styles/Styles";
@@ -18,7 +18,29 @@ export default function MedalsScreen({ navigation }) {
 
     const secretButton = () => {
         if (secretCount >= 10) setSecretMedal1(1);
+        persistMedals();
     }
+
+    const persistMedals = async () => {
+
+        // Persist medal data
+        try {
+            await AsyncStorage.setItem('countMedalData1', JSON.stringify(countMedal1))
+            await AsyncStorage.setItem('countMedalData2', JSON.stringify(countMedal2))
+            await AsyncStorage.setItem('countMedalData3', JSON.stringify(countMedal3))
+            await AsyncStorage.setItem('countMedalData4', JSON.stringify(countMedal4))
+            await AsyncStorage.setItem('countMedalData5', JSON.stringify(countMedal5))
+            await AsyncStorage.setItem('countMedalData6', JSON.stringify(countMedal6))
+            await AsyncStorage.setItem('secretMedalData1', JSON.stringify(secretMedal1))
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
+    useEffect(() => {
+        persistMedals();
+    }, [countMedal1, countMedal2, countMedal3, countMedal4, countMedal5, countMedal6, tapsMedal1, tapsMedal2, customizeMedal1, customizeMedal2, secretMedal1])
 
     // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― //
 

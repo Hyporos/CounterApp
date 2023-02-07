@@ -20,7 +20,7 @@ export default function CustomizeScreen({ navigation }) {
     const [displayThemes, setDisplayThemes] = useState('flex');
     const [displayEffects, setDisplayEffects] = useState('none');
 
-    const {setCustomizeMedal1, setCustomizeMedal2 } = useContext(MedalContext);
+    const { customizeMedal1, customizeMedal2, setCustomizeMedal1, setCustomizeMedal2 } = useContext(MedalContext);
 
     useEffect(() => {
 
@@ -28,6 +28,17 @@ export default function CustomizeScreen({ navigation }) {
         if (colors.primary == '#aaaaaa') setCustomizeMedal2(1);
 
     })
+
+    // Persist theme
+    const persistTheme = async (theme) => {
+        try {
+            await AsyncStorage.setItem('theme', theme)
+            await AsyncStorage.setItem('customizeMedalData1', JSON.stringify(customizeMedal1))
+            //await AsyncStorage.setItem('customizeMedalData2', JSON.stringify(customizeMedal2))
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     const accentSelectionAmber = useMemo(() => {
         if (colors.background == '#161619') return 'AmberSpruce';
@@ -174,8 +185,8 @@ export default function CustomizeScreen({ navigation }) {
                         setDisplayThemes('flex')
                         setDisplayEffects('none')
                     }}
-                    style={[styles.tabHeader, {backgroundColor: themeHighlight , borderBottomStartRadius: 23 }]} activeOpacity={.35}>
-                    <Text style={[styles.tabHeaderText, {color: colors.basicText}]}>Theme</Text>
+                    style={[styles.tabHeader, { backgroundColor: themeHighlight, borderBottomStartRadius: 23 }]} activeOpacity={.35}>
+                    <Text style={[styles.tabHeaderText, { color: colors.basicText }]}>Theme</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -186,12 +197,12 @@ export default function CustomizeScreen({ navigation }) {
                         setDisplayThemes('none')
                     }}
                     style={[styles.tabHeader, { backgroundColor: effectsHighlight, borderBottomEndRadius: 23 }]} activeOpacity={.35}>
-                    <Text style={[styles.tabHeaderText, {color: colors.basicText}]}>Effects</Text>
+                    <Text style={[styles.tabHeaderText, { color: colors.basicText }]}>Effects</Text>
                 </TouchableOpacity>
 
             </View>
 
-            <Text style={[styles.themeHeaderText, {color: colors.basicText}]}>Accent</Text>
+            <Text style={[styles.themeHeaderText, { color: colors.basicText }]}>Accent</Text>
 
             <View style={[styles.themeDivider, { borderColor: colors.border }]}></View>
 
@@ -199,90 +210,118 @@ export default function CustomizeScreen({ navigation }) {
 
                 <Card style={[styles.themeCard, { elevation: 5, backgroundColor: colors.container, borderColor: colors.basicBorder, marginTop: 0 }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(accentSelectionAmber)}>
+                        onPress={() => {
+                            setTheme(accentSelectionAmber)
+                            persistTheme(accentSelectionAmber);
+                            }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/amberIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Amber</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Amber</Text>
                     </TouchableOpacity>
                 </Card>
 
                 <Card style={[styles.themeCard, { elevation: 5, backgroundColor: colors.container, borderColor: colors.basicBorder, marginTop: 0 }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => { 
+                        onPress={() => {
                             setTheme(accentSelectionMustard);
+                            persistTheme(accentSelectionMustard);
                             secretOrder();
-                            }}>
+                        }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/mustardIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Mustard</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Mustard</Text>
                     </TouchableOpacity>
                 </Card>
 
                 <Card style={[styles.themeCard, { elevation: 5, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(accentSelectionCinnabar)}>
+                        onPress={() => {
+                            setTheme(accentSelectionCinnabar);
+                            persistTheme(accentSelectionCinnabar);
+                            }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/cinnabarIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Cinnabar</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Cinnabar</Text>
                     </TouchableOpacity>
                 </Card>
 
                 <Card style={[styles.themeCard, { elevation: 5, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(accentSelectionAutumn)}>
+                        onPress={() => {
+                            setTheme(accentSelectionAutumn)
+                            persistTheme(accentSelectionAutumn);
+                            }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/autumnIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Autumn</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Autumn</Text>
                     </TouchableOpacity>
                 </Card>
 
                 <Card style={[styles.themeCard, { elevation: 5, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(accentSelectionInchworm)}>
+                        onPress={() => {
+                            setTheme(accentSelectionInchworm)
+                            persistTheme(accentSelectionInchworm);
+                            }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/inchwormIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Inchworm</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Inchworm</Text>
                     </TouchableOpacity>
                 </Card>
 
                 <Card style={[styles.themeCard, { elevation: 5, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(accentSelectionMint)}>
+                        onPress={() => {
+                            setTheme(accentSelectionMint)
+                            persistTheme(accentSelectionMint);
+                            }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/mintIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Mint</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Mint</Text>
                     </TouchableOpacity>
                 </Card>
 
                 <Card style={[styles.themeCard, { elevation: 5, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(accentSelectionAzure)}>
+                        onPress={() => {
+                            setTheme(accentSelectionAzure)
+                            persistTheme(accentSelectionAzure);
+                            }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/azureIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Azure</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Azure</Text>
                     </TouchableOpacity>
                 </Card>
 
                 <Card style={[styles.themeCard, { elevation: 5, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(accentSelectionCerulean)}>
+                        onPress={() => {
+                            setTheme(accentSelectionCerulean)
+                            persistTheme(accentSelectionCerulean);
+                            }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/ceruleanIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Cerulean</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Cerulean</Text>
                     </TouchableOpacity>
                 </Card>
 
                 <Card style={[styles.themeCard, { elevation: 5, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(accentSelectionWisteria)}>
+                        onPress={() => {
+                            setTheme(accentSelectionWisteria)
+                            persistTheme(accentSelectionWisteria);
+                            }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/wisteriaIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Wisteria</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Wisteria</Text>
                     </TouchableOpacity>
                 </Card>
 
                 <Card style={[styles.themeCard, { elevation: 5, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
-                        onPress={() => setTheme(accentSelectionRose)}>
+                        onPress={() => {
+                            setTheme(accentSelectionRose)
+                            persistTheme(accentSelectionRose);
+                            }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/roseIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Rose</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Rose</Text>
                     </TouchableOpacity>
                 </Card>
 
             </View>
 
-            <Text style={[styles.themeHeaderText, {color: colors.basicText}]}>Base</Text>
+            <Text style={[styles.themeHeaderText, { color: colors.basicText }]}>Base</Text>
 
             <View style={[styles.themeDivider, { borderColor: colors.border }]}></View>
 
@@ -292,11 +331,12 @@ export default function CustomizeScreen({ navigation }) {
                     <TouchableOpacity style={styles.themeCardTouchable}
                         onPress={() => {
                             setTheme(baseSelectionGrey);
+                            persistTheme(baseSelectionGrey);
                             setThemeHighlight('#3d3d3d');
                             setEffectsHighlight('#181818');
                         }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/darkGreyIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Dark / Grey</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Dark / Grey</Text>
                     </TouchableOpacity>
                 </Card>
 
@@ -304,23 +344,25 @@ export default function CustomizeScreen({ navigation }) {
                     <TouchableOpacity style={styles.themeCardTouchable}
                         onPress={() => {
                             setTheme(baseSelectionWhiteGrey);
+                            persistTheme(baseSelectionWhiteGrey);
                             setThemeHighlight('#E8E8E8');
                             setEffectsHighlight('#ffffff');
                         }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/lightGreyIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>White / Grey</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>White / Grey</Text>
                     </TouchableOpacity>
                 </Card>
 
-                <Card style={[styles.themeCard, { elevation: 3, backgroundColor: colors.container, borderColor: colors.basicBorder}]}>
+                <Card style={[styles.themeCard, { elevation: 3, backgroundColor: colors.container, borderColor: colors.basicBorder }]}>
                     <TouchableOpacity style={styles.themeCardTouchable}
                         onPress={() => {
                             setTheme(baseSelectionSpruce);
+                            persistTheme(baseSelectionSpruce);
                             setThemeHighlight('#3d3d45');
                             setEffectsHighlight('#161619');
                         }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/darkSpruceIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Dark / Spruce</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Dark / Spruce</Text>
                     </TouchableOpacity>
                 </Card>
 
@@ -328,11 +370,12 @@ export default function CustomizeScreen({ navigation }) {
                     <TouchableOpacity style={styles.themeCardTouchable}
                         onPress={() => {
                             setTheme(baseSelectionMauve);
+                            persistTheme(baseSelectionMauve);
                             setThemeHighlight('#423c4a');
                             setEffectsHighlight('#17131c');
                         }}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/darkMauveIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Dark / Mauve</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Dark / Mauve</Text>
                     </TouchableOpacity>
                 </Card>
 
@@ -340,7 +383,7 @@ export default function CustomizeScreen({ navigation }) {
                     <TouchableOpacity style={styles.themeCardTouchable}
                         onPress={() => randomizeTheme()}>
                         <Image style={{ width: 27, height: 27 }} source={require('../../assets/theme-icons/randomizeIcon.png')}></Image>
-                        <Text style={[styles.themeCardText, {color: colors.basicText}]}>Randomize</Text>
+                        <Text style={[styles.themeCardText, { color: colors.basicText }]}>Randomize</Text>
                     </TouchableOpacity>
                 </Card>
 
